@@ -8,7 +8,7 @@
       name="description"
       content="Interactive banking demo with fictional, editable transactions and profile details."
     />
-    <title>Southern Banking Demo</title>
+    <title>Great Southern Bank</title>
     <link
       rel="icon"
       type="image/png"
@@ -82,16 +82,6 @@
         display: flex;
         flex-direction: column;
         box-shadow: 0 0 50px #00344415;
-      }
-      .demo-bar {
-        background: #003444;
-        color: #fff;
-        text-align: center;
-        font-size: 12px;
-        letter-spacing: 1.3px;
-        padding: 5px 0;
-        flex-shrink: 0;
-        font-weight: 800;
       }
       header {
         height: 66px;
@@ -2303,7 +2293,7 @@
       function profileEditor() {
         sheet(
           "Edit demo details",
-          `<p class="sheet-note">These fictional details are saved on this device. No photo is used.</p><form id="profile-form">${field("Card holder name", "name", state.name, "text", 'required maxlength="60"')}${field("Sample card number (masked)", "cardNumber", maskedCard(), "text", 'required pattern="[0-9]{6}[xX]{6}[0-9]{4}" maxlength="16" title="Six digits, six X characters, then four digits"')}${field("Age", "age", state.age, "number", 'required min="1" max="120"')}${field("Email", "email", state.email, "email", 'maxlength="100"')}${field("Mobile", "phone", state.phone, "tel", 'maxlength="24"')}${state.accounts.map((a, i) => `<fieldset class="account-editor"><legend>${escape(a.name)}</legend>${field("Sample account number", `account${i}`, a.number, "text", 'required inputmode="numeric" pattern="[0-9]{4,12}" minlength="4" maxlength="12"')}${field("Sample BSB (6 digits)", `bsb${i}`, a.bsb, "text", 'required inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6"')}${field("Available sample balance", `balance${i}`, balance(a), "number", 'required step="0.01" min="-10000000" max="10000000"')}</fieldset>`).join("")}<button class="btn">Save demo details</button></form>`,
+          `<p class="sheet-note">Edit Menu.</p><form id="profile-form">${field("Card holder name", "name", state.name, "text", 'required maxlength="60"')}${field("Sample card number (masked)", "cardNumber", maskedCard(), "text", 'required pattern="[0-9]{6}[xX]{6}[0-9]{4}" maxlength="16" title="Six digits, six X characters, then four digits"')}${field("Age", "age", state.age, "number", 'required min="1" max="120"')}${field("Email", "email", state.email, "email", 'maxlength="100"')}${field("Mobile", "phone", state.phone, "tel", 'maxlength="24"')}${state.accounts.map((a, i) => `<fieldset class="account-editor"><legend>${escape(a.name)}</legend>${field("Sample account number", `account${i}`, a.number, "text", 'required inputmode="numeric" pattern="[0-9]{4,12}" minlength="4" maxlength="12"')}${field("Sample BSB (6 digits)", `bsb${i}`, a.bsb, "text", 'required inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6"')}${field("Available sample balance", `balance${i}`, balance(a), "number", 'required step="0.01" min="-10000000" max="10000000"')}</fieldset>`).join("")}<button class="btn">Save demo details</button></form>`,
         );
       }
       function transactionEditor(t) {
