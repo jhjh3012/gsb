@@ -6,9 +6,9 @@
     <meta name="theme-color" content="#003444" />
     <meta
       name="description"
-      content="Interactive banking demo with fictional, editable transactions and profile details."
+      content="Take your banking wherever you go with the Great Southern Bank App, designed to make managing your money fast, secure, and effortless."
     />
-    <title>Southern Banking Demo</title>
+    <title>Great Southern Bank</title>
     <link
       rel="icon"
       type="image/png"
@@ -82,16 +82,6 @@
         display: flex;
         flex-direction: column;
         box-shadow: 0 0 50px #00344415;
-      }
-      .demo-bar {
-        background: #003444;
-        color: #fff;
-        text-align: center;
-        font-size: 12px;
-        letter-spacing: 1.3px;
-        padding: 5px 0;
-        flex-shrink: 0;
-        font-weight: 800;
       }
       header {
         height: 66px;
@@ -1816,7 +1806,6 @@
   </head>
   <body>
     <div class="app">
-      <div class="demo-bar" aria-label="Demo application">Demo</div>
       <header id="header"></header>
       <main id="main"></main>
       <nav id="nav" aria-label="Main navigation"></nav>
@@ -2097,7 +2086,7 @@
       paths.savings =
         "M20 11h2v4l-3 2-1 4h-3v-3H9v3H6l-1-5-3-2V9h3l1-5 4 3M12 5a3 3 0 1 0 0-6 3 3 0 0 0 0 6M9 9h5M17 11h.1";
       function loginView() {
-        return `<div class="login-brand">${mark}<span>Great Southern<br>Bank</span></div><form id="login-form"><h1>Welcome back,<br><span>${escape(state.name.split(" ")[0])}</span></h1><label class="passcode-label">Passcode<input name="passcode" id="passcode" type="password" inputmode="numeric" autocomplete="off" maxlength="4" pattern="[0-9]{4}" aria-label="Passcode" required></label><p id="login-error" role="alert"></p><button class="btn login-button">Login</button><p class="login-help">Demo passcode: 3012</p></form><p class="login-foot">Independent banking prototype</p>`;
+        return `<div class="login-brand">${mark}<span>Great Southern<br>Bank</span></div><form id="login-form"><h1>Welcome back,<br><span>${escape(state.name.split(" ")[0])}</span></h1><label class="passcode-label">Passcode<input name="passcode" id="passcode" type="password" inputmode="numeric" autocomplete="off" maxlength="4" pattern="[0-9]{4}" aria-label="Passcode" required></label><p id="login-error" role="alert"></p><button class="btn login-button">Login</button><p class="login-help">Passcode: 3012</p></form><p class="login-foot">Need Help? Contact Us.</p>`;
       }
 
       function save() {
@@ -2261,7 +2250,7 @@
         if (!t) return '<div class="empty">Transaction not found</div>';
         const incoming = t.amount > 0;
         const date = new Date(t.date + "T12:00:00");
-        return `<div class="transaction-content ${incoming ? "incoming" : "outgoing"}"><div class="transaction-hero">${icon("receipt")}${incoming ? `<div class="payment-title">${escape(t.title)}</div><div class="payment-date">${date.toLocaleDateString("en-GB")}</div>` : ""}<button class="big-value amount-edit" data-action="amount-tap" aria-label="Triple-tap ${escape(amount(t.amount))} to edit sample transaction">${amount(t.amount)}</button></div>${incoming ? `<dl class="receipt-fields"><dt>Payer Name</dt><dd>${escape(t.payer || "Sample sender")}</dd><dt>Payee Details</dt><dd>${escape(state.name)}<br>${escape(account().bsb)} ${escape(account().number)}</dd><dt>Description</dt><dd>${escape(t.description)}</dd><dt>Payment Type</dt><dd>Osko</dd><dt>Receipt number</dt><dd>DEMO-${escape(t.id.slice(0, 12).toUpperCase())}</dd><dt>Status</dt><dd>${escape(t.status || "Processed")}</dd><dt>Reference</dt><dd>Sample transaction</dd></dl>` : `<dl class="purchase-fields"><div><dt>Status</dt><dd><span class="status-pill ${t.status === "Pending" ? "pending" : ""}">${escape(t.status || "Processed")}</span></dd></div><div><dt>Transaction type</dt><dd>${icon("cards")}${escape(t.title)}</dd></div><div><dt>Card used</dt><dd>${escape(maskedCard())}</dd></div><div><dt>Description</dt><dd>${escape(t.description)}</dd></div><div><dt>Process date</dt><dd>${date.toLocaleDateString("en-AU", { weekday: "short", day: "numeric", month: "short", year: "numeric" })}</dd></div></dl>`}<div class="receipt-footer"><button class="btn outline" data-action="share-demo">${icon("share")} Share demo</button></div></div>`;
+        return `<div class="transaction-content ${incoming ? "incoming" : "outgoing"}"><div class="transaction-hero">${icon("receipt")}${incoming ? `<div class="payment-title">${escape(t.title)}</div><div class="payment-date">${date.toLocaleDateString("en-GB")}</div>` : ""}<button class="big-value amount-edit" data-action="amount-tap" aria-label="Triple-tap ${escape(amount(t.amount))} to edit sample transaction">${amount(t.amount)}</button></div>${incoming ? `<dl class="receipt-fields"><dt>Payer Name</dt><dd>${escape(t.payer || "Sample sender")}</dd><dt>Payee Details</dt><dd>${escape(state.name)}<br>${escape(account().bsb)} ${escape(account().number)}</dd><dt>Description</dt><dd>${escape(t.description)}</dd><dt>Payment Type</dt><dd>Osko</dd><dt>Receipt number</dt><dd>DEMO-${escape(t.id.slice(0, 12).toUpperCase())}</dd><dt>Status</dt><dd>${escape(t.status || "Processed")}</dd><dt>Reference</dt><dd>Sample transaction</dd></dl>` : `<dl class="purchase-fields"><div><dt>Status</dt><dd><span class="status-pill ${t.status === "Pending" ? "pending" : ""}">${escape(t.status || "Processed")}</span></dd></div><div><dt>Transaction type</dt><dd>${icon("cards")}${escape(t.title)}</dd></div><div><dt>Card used</dt><dd>${escape(maskedCard())}</dd></div><div><dt>Description</dt><dd>${escape(t.description)}</dd></div><div><dt>Process date</dt><dd>${date.toLocaleDateString("en-AU", { weekday: "short", day: "numeric", month: "short", year: "numeric" })}</dd></div></dl>`}<div class="receipt-footer"><button class="btn outline" data-action="share-demo">${icon("share")} Share</button></div></div>`;
       }
       function vaultView() {
         return `<div class="vault">${icon("vault")}<h2>When an account is in The Vault</h2><p>It will be hidden from your accounts list.</p><p>You will still see the account and balance in your statements.</p><p class="sheet-note">This demo lets you explore the screen. Your sample accounts stay accessible.</p><button class="btn" data-action="back">Back to accounts</button></div>`;
