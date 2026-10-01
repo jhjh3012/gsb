@@ -2104,7 +2104,7 @@ paths.pay = "M7 2v20M11 6H6a3 3 0 0 0 0 6h2a3 3 0 0 1 0 6H3M14 12h8m-4-4 4 4-4 4
 paths.savings =
   "M20 11h2v4l-3 2-1 4h-3v-3H9v3H6l-1-5-3-2V9h3l1-5 4 3M12 5a3 3 0 1 0 0-6 3 3 0 0 0 0 6M9 9h5M17 11h.1";
 function loginView() {
-  return `<div class="login-brand">${mark}<span>Great Southern<br>Bank</span></div><form id="login-form"><h1>Welcome back,<br><span>${escape(state.name.split(" ")[0])}</span></h1><label class="passcode-label">Passcode<input name="passcode" id="passcode" type="password" inputmode="numeric" autocomplete="off" maxlength="4" pattern="[0-9]{4}" aria-label="Passcode" required></label><p id="login-error" role="alert"></p><button class="btn login-button">Login</button><p class="login-help">Demo passcode: 3012</p></form><p class="login-foot">Independent banking prototype</p>`;
+  return `<div class="login-brand">${mark}<span>Great Southern<br>Bank</span></div><form id="login-form"><h1>Welcome back,<br><span>${escape(state.name.split(" ")[0])}</span></h1><label class="passcode-label">Passcode<input name="passcode" id="passcode" type="password" inputmode="numeric" autocomplete="off" maxlength="4" pattern="[0-9]{4}" aria-label="Passcode" required></label><p id="login-error" role="alert"></p><button class="btn login-button">Login</button></form>`;
 }
 
 function save() {
